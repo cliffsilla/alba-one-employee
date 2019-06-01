@@ -1,7 +1,10 @@
-$(document).ready(function(){
-
-    //Get Employee data from the api
-    $.getJSON(`http://dummy.restapiexample.com/api/v1/employees`, function(data){
+$.ajax({
+    url: "http://dummy.restapiexample.com/api/v1/employees",
+    type: "GET",
+    crossDomain: true,
+    dataType: "json",
+    success: function (data) {
+        
         console.log(data);
         var users_table_html = `<table id="alba-table" class="table table-striped">
         <thead>
@@ -34,15 +37,17 @@ $(document).ready(function(){
         </table>`;
 
         $('#alba-data').html(users_table_html);
-        // $('#alba-table').DataTable({
-        //     "columns": [
-        //       { "width": "10%" },
-        //       { "width": "20%" },
-        //       { "width": "10%" },
-        //       { "width": "10%" },
-        //       null
-        //     ]
-        //   });
-
-    });
+        $('#alba-table').DataTable({
+            "columns": [
+              { "width": "10%" },
+              { "width": "20%" },
+              { "width": "10%" },
+              { "width": "10%" },
+              null
+            ]
+          });
+    },
+    error: function (xhr, status) {
+        alert("error");
+    }
 });
