@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     //Get Employee data from the api
     $.ajax({
-        url: "//dummy.restapiexample.com/api/v1/employees",
+        url: "https://cors.io/?http://dummy.restapiexample.com/api/v1/employees",
         type: "GET",
         dataType : 'jsonp',
         crossDomain: true,
@@ -116,7 +116,7 @@ $(document).ready(function(){
 
         // submit form data to api
         $.ajax({
-            url: `//dummy.restapiexample.com/api/v1/create`,
+            url: `https://cors.io/?http://dummy.restapiexample.com/api/v1/create`,
             type : "POST",
             contentType : 'application/json',
             data : form_data,
@@ -143,7 +143,7 @@ $(document).ready(function(){
         localStorage.setItem("editEmployeeId",id);
 
         // read one record based on given employee id
-        $.getJSON(`//dummy.restapiexample.com/api/v1/employee/${id}`, function(data){
+        $.getJSON(`https://cors.io/?http://dummy.restapiexample.com/api/v1/employee/${id}`, function(data){
             
             // values will be used to fill out our form
             var name = data.employee_name;
@@ -208,7 +208,7 @@ $(document).ready(function(){
         var form_data=JSON.stringify($(this).serializeObject()); 
         // submit form data to api
         $.ajax({
-            url: `//dummy.restapiexample.com/api/v1/update/${id}`,
+            url: `https://cors.io/?http://dummy.restapiexample.com/api/v1/update/${id}`,
             type : "PUT",
             contentType : 'application/json',
             data : form_data,
@@ -250,7 +250,7 @@ $(document).ready(function(){
         
                     // send delete request to api / remote server
                     $.ajax({
-                        url: `//dummy.restapiexample.com/api/v1/delete/${id}`,
+                        url: `https://cors.io/?http://dummy.restapiexample.com/api/v1/delete/${id}`,
                         type : "DELETE",
                         dataType : 'json',
                         data : JSON.stringify({ id: id }),
