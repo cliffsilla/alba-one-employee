@@ -2,13 +2,14 @@ $(document).ready(function(){
 
     //Get Employee data from the api
     $.ajax({
-        url: "http://dummy.restapiexample.com/api/v1/employees",
+        url: "//dummy.restapiexample.com/api/v1/employees",
         type: "GET",
+        dataType : 'jsonp',
         crossDomain: true,
         dataType: "json",
         success: function (data) {
             
-            console.log(data);
+            
             var users_table_html = `<table id="alba-table" class="table table-striped">
             <thead>
             <tr>
@@ -51,7 +52,7 @@ $(document).ready(function(){
               });
         },
         error: function (xhr, status) {
-            alert("error");
+            console.log(status);
         }
     });
 
@@ -115,7 +116,7 @@ $(document).ready(function(){
 
         // submit form data to api
         $.ajax({
-            url: `http://dummy.restapiexample.com/api/v1/create`,
+            url: `//dummy.restapiexample.com/api/v1/create`,
             type : "POST",
             contentType : 'application/json',
             data : form_data,
@@ -142,7 +143,7 @@ $(document).ready(function(){
         localStorage.setItem("editEmployeeId",id);
 
         // read one record based on given employee id
-        $.getJSON(`http://dummy.restapiexample.com/api/v1/employee/${id}`, function(data){
+        $.getJSON(`//dummy.restapiexample.com/api/v1/employee/${id}`, function(data){
             
             // values will be used to fill out our form
             var name = data.employee_name;
@@ -207,7 +208,7 @@ $(document).ready(function(){
         var form_data=JSON.stringify($(this).serializeObject()); 
         // submit form data to api
         $.ajax({
-            url: `http://dummy.restapiexample.com/api/v1/update/${id}`,
+            url: `//dummy.restapiexample.com/api/v1/update/${id}`,
             type : "PUT",
             contentType : 'application/json',
             data : form_data,
@@ -249,7 +250,7 @@ $(document).ready(function(){
         
                     // send delete request to api / remote server
                     $.ajax({
-                        url: `http://dummy.restapiexample.com/api/v1/delete/${id}`,
+                        url: `//dummy.restapiexample.com/api/v1/delete/${id}`,
                         type : "DELETE",
                         dataType : 'json',
                         data : JSON.stringify({ id: id }),
